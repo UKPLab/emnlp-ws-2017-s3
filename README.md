@@ -39,5 +39,6 @@ We used the dependency based word embeddings for english: https://levyomer.wordp
 and the following german embeddings (with min count 5): https://www.ukp.tu-darmstadt.de/research/ukp-in-challenges/germeval-2014/
 
 To test the installation just run:
+
 python example.py [embedding_path] [model_folder]
 
