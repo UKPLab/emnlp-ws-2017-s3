@@ -37,16 +37,15 @@ system_summary = ["Interior Alaska's permafrost has warmed in some places to the
   Earth frozen since woolly mammoths and bison wandered Interior steppes has been turning to mush. Lakes have been shrinking. Trees are stressed. Prehistoric ice has melted underground, leaving voids that collapse into sinkholes. \
  Largely concentrated where people have disturbed the surface, such damage can be expensive, even heartbreaking. It's happening now in Fairbanks: Toppled spruce, roller-coaster bike trails, rippled pavement, homes and buildings that sag into ruin."]
 
-model_folder = "/Users/max/Documents/PhD/Research/Main/HumanJudgments/LearningToScore/Train/models/en"
-
 @click.command()
 @click.argument('embs_path', type=click.Path(exists=True))
 @click.argument('model_folder', type=click.Path(exists=True))
-def run_example(word_embs, model_folder):
+def run_example(embs_path, model_folder):
 	word_embs = word_embeddings.load_embeddings(embs_path)
 	result = S3.S3(references, system_summary, word_embs, model_folder)
 	print "RESULTS: "
-	print result
+	print "-- (trained on normalized pyramid): ", result[0]
+	print "-- (trained on normalized responsiveness): ", result[1]
 
 if __name__ == '__main__':
 	run_example()
